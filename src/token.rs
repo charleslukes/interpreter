@@ -29,3 +29,31 @@ pub const FALSE: &'static str = "FALSE";
 pub const IF: &'static str = "IF";
 pub const ELSE: &'static str = "ELSE";
 pub const RETURN: &'static str = "RETURN";
+
+#[derive(Debug)]
+pub struct Token {
+    pub token_type: String,
+    pub literal: String,
+}
+
+impl Token {
+    pub fn new(token_type: String, literal: String) -> Token {
+        Token {
+            token_type,
+            literal,
+        }
+    }
+
+    pub fn get_keyword(ident: &str) -> &'static str {
+        match ident {
+            "let" => LET,
+            "fn" => FUNCTION,
+            "true" => TRUE,
+            "false" => FALSE,
+            "if" => IF,
+            "else" => ELSE,
+            "return" => RETURN,
+            _ => IDENT,
+        }
+    }
+}
